@@ -1,0 +1,24 @@
+FROM balenalib/raspberrypi3-debian:bullseye
+
+
+# Install wget (and any needed tools)
+RUN apt-get update && apt-get install -y wget
+RUN apt-get install v4l-utils
+
+# Download the ustreamer .deb package from Debian sid.
+# (Make sure to use the correct version/architecture; this example uses a typical filename for armhf.)
+RUN wget http://ftp.de.debian.org/debian/pool/main/u/ustreamer/ustreamer_3.16-1_armhf.deb \
+    && dpkg -i ustreamer_3.16-1_armhf.deb || apt-get install -f -y \
+    && rm ustreamer_3.16-1_armhf.deb
+
+EXPOSE 8080
+
+CMD ["bash", "-c", "while true; do ls; sleep 100; done"]
+
+# CMD ["ustreamer", "--device=/dev/video0", "--host=0.0.0.0", "--port=8080", "--persistent"]
+
+# ustreamer --device=/dev/video0 --host=0.0.0.0 --port=8080 --persistent
+
+#ustreamer --device=/dev/video0 --buffers=3 -r 640x480 --debug
+
+--format=JPEG 

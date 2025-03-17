@@ -1,0 +1,30 @@
+version: "2.1"
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+  #sample1:
+  #  build: ./sample-app
+  #  environment:
+  #    SERVICE_NAME: "sample1"
+  web:
+    build: ./web
+    ports:
+      - 3000:3000
+  door-motor:
+    build: ./door-motor
+    privileged: true # Required for GPIO access
+    restart: always
+    devices:
+      - "/dev/mem:/dev/mem"
+      - "/dev/gpiomem:/dev/gpiomem"
+  #  network_mode: "host"
+  ustreamer:
+    build: ./ustreamer
+    devices:
+      - "/dev/video0:/dev/video0"
+      - "/dev/video1:/dev/video1"
+    privileged: true
+    ports:
+      - "8080:8080"
