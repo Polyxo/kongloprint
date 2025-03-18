@@ -1,0 +1,11 @@
+{
+  "name": "kongloprint",
+  "version": "0.0.1",
+  "description": "A simple automated printer",
+  "scripts": {
+    "publish": "balena push robertguehne/3d-druck",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Robert Guehne",
+  "license": "MIT"
+}
