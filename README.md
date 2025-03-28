@@ -6,6 +6,13 @@ This tool is a work in progress
 
 This tool automates the print ejection process using a Raspberry Pi and Balena. It is compatible with the P1S printer and includes features for webcam monitoring and door control.
 
+### Print files
+
+The hinge for the motor can be found here:
+
+https://makerworld.com/de/models/1250405-motorized-door-opener-for-p1s
+
+
 ### Features
 
 - **Automated Print Ejection**: Automatically ejects prints upon completion.
